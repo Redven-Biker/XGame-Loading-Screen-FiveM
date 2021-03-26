@@ -129,10 +129,8 @@
                     </h1>
                   </div>
                   <div class="fin-subheading">
-                    &middot; ROLEPLAY &middot;                              
-                      <audio id='muzica' volume='0.1' autoplay>
-                        <source src="https://cloud.xlife.fr/music/loading.mp3" type="audio/mp3">
-                      </audio>           
+                    &middot; ROLEPLAY &middot;     
+                    <audio id="loading" src="music/music.mp3" autoplay="true" hidden="true" loop="true"></audio>        
                   </div>
                 </div>
               </div>
@@ -259,10 +257,6 @@
                 <div class="col-md-4">
                   <span class="awesome-contact"><i class="fab fa-discord"></i></span>
                   <p>
-                    Kentain.fr<br>
-                    <a>Kentain#6839</a>
-                    <a>| Dev.<br></a>
-                  </p><p>
                     Redven Biker<br>
                     <a>Redven Biker#0415</a>
                     <a>| Dev.<br></a>
@@ -276,18 +270,37 @@
     </div>
 
     <script>
-    var play = false;
-            var vid = document.getElementById("muzica");
-            vid.volume = 0.3;
-            window.addEventListener('keyup', function(e)
-            {
-                if (e.which == 69){
-                    vid.volume = Math.min(vid.volume + 0.1,1);
-                } else if(e.which == 65){
-                    vid.volume = Math.max(vid.volume - 0.1,0);
-                };
-            });
-    </script>
+      var play = false;
+              var vid = document.getElementById("loading");
+              vid.volume = 0.1;
+              window.addEventListener('keyup', function(e)
+              {
+                  if (e.which == 69){
+                      vid.volume = Math.min(vid.volume + 0.1,1);
+                  } else if(e.which == 65){
+                      vid.volume = Math.max(vid.volume - 0.1,0);
+                  };
+              });
+      
+              var audio = document.querySelector('audio');
+      
+              if (audio) {
+      
+              window.addEventListener('keydown', function (event) {
+      
+              var key = event.which || event.keyCode;
+      
+              if (key === 32) { // spacebar
+      
+              event.preventDefault();
+      
+              audio.paused ? audio.play() : audio.pause();
+            
+          }
+      
+        });
+      }
+      </script>
     <script src="https://code.jquery.com/jquery-2.1.1.min.js" type="text/javascript"></script>
     <script src="js/plugins.js" type="text/javascript"></script>
     <script src="js/main.js" type="text/javascript"></script>
